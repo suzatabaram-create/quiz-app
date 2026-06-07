@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MatchMind Quiz</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #7ab3d4, #5a9cbf);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      
+    }
+
+    .box {
+      background-color: #e8d5b7;
+   border-radius: 20px;
+   padding: 30px;
+   width: 600px;
+   position: relative;
+   border: 3px solid #2d1f0e;
+  
+    }
+
+    .logo-img {
+       position: absolute;
+  left: -20px;
+  top: 20px;
+  z-index: 10;
+    }
+
+    .heading {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2d1f0e;
+      margin-bottom: 10px;
+       margin-left: 130px;
+    }
+
+    .timer {
+   background-color: #F7F2EC;
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+    }
+
+    .card {
+     background-color: #F0E6DA;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 0 auto 20px auto;
+  width: 420px;
+  position: relative;
+  z-index: 1; 
+    }
+
+    .card h4 {
+      margin: 0 0 6px 0;
+      color: gray;
+      font-size: 13px;
+    }
+
+    .card h2 {
+      margin: 0 0 20px 0;
+      font-size: 20px;
+    }
+
+    .option {
+      background-color: #F7F2EC;
+      border: 2px solid transparent;
+      border-radius: 30px;
+      padding: 12px 20px;
+      width: 100%;
+      text-align: left;
+      font-size: 15px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .option:hover {
+      border: 2px solid #c9a87c;
+    }
+
+    .option.active {
+      background-color: #2d1f0e;
+      color: white;
+    }
+
+    .letter {
+      background-color: #e0d0bc;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 13px;
+      color: #5a4a38;
+      flex-shrink: 0;
+    }
+
+    .option.active .letter {
+      background-color: #4a3828;
+      color: white;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hint {
+      background-color: #f5ede0;
+      border-radius: 30px;
+      padding: 10px 18px;
+      font-size: 13px;
+    }
+
+    .hint b {
+      display: block;
+      color: #2d1f0e;
+    }
+
+    .hint span {
+      color: gray;
+    }
+
+    .skip {
+      background-color: #f5ede0;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .skip:hover {
+      background-color: #e0d0bc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+
+    
+    <img class="logo-img" src="MatchMind_Logo.png" height="140">
+
+   
+    <div class="heading">MatchMind</div>
+
+   
+   
+
+    <div class="card">
+          <div style="text-align: right; margin-bottom: 15px;">
+    <span class="timer">⏱ 0.08</span>
+  </div>
+      <h4>Question 1</h4>
+      <h2>How does HTML Stand for?</h2>
+
+      <button class="option">
+        <div class="letter">A</div>
+        Hypertext Machine language
+      </button>
+
+      <button class="option active">
+        <div class="letter">B</div>
+        HyperText Markup Language
+      </button>
+
+      <button class="option">
+        <div class="letter">C</div>
+        HighText Markeup Language
+      </button>
+
+      <button class="option">
+        <div class="letter">D</div>
+        HighTText markeup language
+      </button>
+    </div>
+
+    <div class="footer">
+      <div class="hint">
+        💡 <b>Think carefully,</b>
+        <span>You're doing great!</span>
+      </div>
+      <button class="skip">SKIP »</button>
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.option').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.option').forEach(function(b) {
+          b.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
