@@ -3,23 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MatchMind</title>
-<link rel="stylesheet" href="style.css">
+<title>MatchMind - Home</title>
+
+<style>
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#E6E7E2;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:580px;
+max-width:100%;
+background:#f7f5f2;
+border-radius:30px;
+padding:40px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.logo img{
+width:160px;
+max-width:100%;
+}
+
+h1{
+font-size:60px;
+color:#5a463a;
+font-weight:300;
+}
+
+.tagline{
+font-size:22px;
+color:#5a463a;
+margin-bottom:30px;
+}
+
+h2{
+font-size:36px;
+color:#4b3b32;
+}
+
+.subtitle{
+font-size:18px;
+margin-bottom:25px;
+color:#4b3b32;
+}
+
+.input-box{
+display:flex;
+align-items:center;
+background:#ece9e5;
+border-radius:30px;
+padding:15px;
+margin-bottom:25px;
+}
+
+.input-box img{
+width:28px;
+margin-right:10px;
+}
+
+.input-box input{
+border:none;
+outline:none;
+width:100%;
+font-size:16px;
+background:transparent;
+}
+
+.btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#b2a396;
+color:#fff;
+font-size:22px;
+cursor:pointer;
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 1024px){
+.container{
+width:90%;
+}
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px){
+
+h1{
+font-size:40px;
+}
+
+h2{
+font-size:28px;
+}
+
+.tagline{
+font-size:18px;
+}
+
+.container{
+padding:25px;
+}
+
+.input-box{
+padding:12px;
+}
+}
+
+/* ===== SMALL MOBILE ===== */
+@media (max-width: 480px){
+
+h1{
+font-size:32px;
+}
+
+h2{
+font-size:22px;
+}
+
+.btn{
+font-size:18px;
+}
+
+.tagline{
+font-size:16px;
+}
+}
+
+</style>
 </head>
+
 <body>
+
 <div class="container">
-    <div class="logo">
-        <img src="logo.png" alt="MatchMind Logo">
-    </div>
-    <h1>MatchMind</h1>
-    <p class="tagline">— Master Your Mind —</p>
-    <h2>WELCOME!</h2>
-    <p class="subtitle">Let's begin your learning journey</p>
-    <div class="input-box">
-        <img src="man.png">
-        <input type="text" placeholder="Enter your name">
-    </div>
-    <button class="btn">Continue →</button>
+
+<div class="logo">
+<img src="logo.png" alt="logo">
 </div>
+
+<h1>MatchMind</h1>
+<p class="tagline">— Master Your Mind —</p>
+
+<h2>WELCOME!</h2>
+<p class="subtitle">Let's begin your learning journey</p>
+
+<div class="input-box">
+<img src="man.png" alt="user">
+<input type="text" placeholder="Enter your name">
+</div>
+
+<button class="btn">Start Quiz →</button>
+
+</div>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MatchMind</title>
+<title>MatchMind | Result</title>
 
 <style>
 
@@ -20,7 +20,6 @@
 --green:#7b9ac9;
 --blue:#4d8dff;
 --orange:#f0a233;
---purple:#7a5cff;
 --red:#ff5252;
 }
 
@@ -34,11 +33,12 @@ font-family:Segoe UI, sans-serif;
 body{
 background:linear-gradient(135deg,var(--bg1),var(--bg2));
 min-height:100vh;
+padding:20px;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:20px;
 }
+
 
 .app{
 width:980px;
@@ -48,23 +48,24 @@ padding:28px;
 box-shadow:0 30px 70px rgba(0,0,0,.18);
 }
 
-.header{
+
+.nav{
 display:flex;
+justify-content:space-between;
 align-items:center;
-gap:14px;
-margin-bottom:25px;
+margin-bottom:20px;
+padding:10px 18px;
+background:var(--card2);
+border-radius:15px;
+box-shadow:0 8px 18px rgba(0,0,0,.08);
 }
 
-.header svg{
-width:58px;
-filter:drop-shadow(0 8px 15px rgba(0,0,0,.12));
-}
-
-.header h1{
-font-size:36px;
+.nav a{
+text-decoration:none;
 color:var(--text);
-font-weight:900;
+font-weight:700;
 }
+
 
 .result{
 display:flex;
@@ -74,6 +75,17 @@ background:var(--card2);
 padding:24px;
 border-radius:25px;
 box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+position:relative;
+}
+
+
+.logo-img{
+position:absolute;
+left:-10px;
+top:20px;
+z-index:5;
+height:80px;
 }
 
 .circle{
@@ -89,6 +101,7 @@ font-weight:900;
 color:var(--text);
 }
 
+
 .result-text h2{
 font-size:32px;
 color:var(--text);
@@ -99,6 +112,7 @@ font-weight:900;
 color:var(--muted);
 margin-top:6px;
 }
+
 
 .stats{
 display:flex;
@@ -115,56 +129,9 @@ text-align:center;
 box-shadow:0 10px 18px rgba(0,0,0,.06);
 }
 
-.card h3{
-font-size:32px;
-color:var(--text);
-}
-
-.buttons{
-display:flex;
-gap:15px;
-margin-top:25px;
-}
-
-.btn{
-flex:1;
-padding:14px;
-border:none;
-border-radius:14px;
-font-size:15px;
-font-weight:800;
-cursor:pointer;
-transition:.25s;
-}
-
-.btn:hover{
-transform:translateY(-2px);
-}
-
-.play{
-background:linear-gradient(135deg,var(--green),#1f9d5a);
-color:white;
-}
-
-.review{
-background:linear-gradient(135deg,var(--blue),#2563eb);
-color:white;
-}
-
-.analytics{
-margin-top:30px;
-background:var(--card2);
-padding:22px;
-border-radius:25px;
-box-shadow:0 12px 25px rgba(0,0,0,.08);
-}
-
-.analytics h2{
-margin-bottom:15px;
-color:var(--text);
-}
-
-.time{
+.analytics,
+.time,
+.review-box{
 margin-top:25px;
 background:var(--card2);
 padding:22px;
@@ -172,10 +139,6 @@ border-radius:25px;
 box-shadow:0 12px 25px rgba(0,0,0,.08);
 }
 
-.time h3{
-margin-bottom:15px;
-color:var(--text);
-}
 
 .row{
 display:grid;
@@ -183,7 +146,6 @@ grid-template-columns:120px 1fr 60px;
 gap:10px;
 align-items:center;
 margin-bottom:10px;
-color:var(--text);
 }
 
 .bar{
@@ -199,18 +161,6 @@ background:linear-gradient(90deg,var(--green),var(--orange),var(--red));
 border-radius:50px;
 }
 
-.review-box{
-margin-top:25px;
-background:var(--card2);
-padding:22px;
-border-radius:25px;
-box-shadow:0 12px 25px rgba(0,0,0,.08);
-}
-
-.review-box h2{
-margin-bottom:15px;
-color:var(--text);
-}
 
 .review-list{
 display:flex;
@@ -226,11 +176,6 @@ padding:14px 16px;
 border-radius:14px;
 background:linear-gradient(135deg,#fff,#f9f3ec);
 border:1px solid rgba(0,0,0,.05);
-transition:.2s;
-}
-
-.item:hover{
-transform:translateY(-2px);
 }
 
 .tag{
@@ -241,27 +186,27 @@ font-weight:800;
 color:white;
 }
 
-.ok{background:var(--green);}
-.bad{background:var(--red);}
-.skip{background:var(--orange);}
+.ok{background:#7b9ac9;}
+.bad{background:#ff5252;}
+.skip{background:#f0a233;}
 
 
-.review-buttons{
-display:flex;
-gap:15px;
-margin-top:18px;
+@media(max-width:768px){
+
+.result{
+flex-direction:column;
+text-align:center;
 }
 
-.review-buttons .btn{
-flex:1;
+.logo-img{
+position:static;
+margin-bottom:10px;
 }
-@media(max-width:800px){
+
 .stats{
 flex-direction:column;
 }
-.row{
-grid-template-columns:80px 1fr 50px;
-}
+
 }
 
 </style>
@@ -271,28 +216,29 @@ grid-template-columns:80px 1fr 50px;
 
 <div class="app">
 
-<div class="header">
 
-<svg viewBox="0 0 700 600">
-<path fill="none" stroke="#8f7d70" stroke-width="10"
-d="M250 70 C180 70,120 130,100 210 C40 235,20 285,70 330 C35 390,15 470,100 500 C190 525,220 515,260 590
-M250 70 C350 20,500 60,520 180 C620 210,640 360,550 450 C500 500,470 490,530 590"/>
-<path fill="none" stroke="#8f7d70" stroke-width="10"
-d="M420 180 C470 165,505 125,520 70 C535 125,570 165,620 180 C570 195,535 235,520 290 C505 235,470 195,420 180"/>
-</svg>
-
-<h1>MatchMind</h1>
-
+<div class="nav">
+<div><b>MatchMind</b></div>
+<div>
+<a href="first_start_Page.html">Home</a>
+</div>
 </div>
 
-<!-- RESULT -->
+
 <div class="result">
+
+
+<img class="logo-img" src="MatchMind_Logo.png" height="140">
+
 <div class="circle">5</div>
+
 <div class="result-text">
 <h2>Perfect Score</h2>
 <p>All questions answered correctly</p>
 </div>
+
 </div>
+
 
 <div class="stats">
 <div class="card"><h3>5</h3><p>Correct</p></div>
@@ -300,9 +246,11 @@ d="M420 180 C470 165,505 125,520 70 C535 125,570 165,620 180 C570 195,535 235,52
 <div class="card"><h3>0</h3><p>Skipped</p></div>
 </div>
 
+
 <div class="analytics">
 <h2>Performance Analysis</h2>
 </div>
+
 
 <div class="time">
 <h3>Time Analysis</h3>
@@ -333,12 +281,12 @@ d="M420 180 C470 165,505 125,520 70 C535 125,570 165,620 180 C570 195,535 235,52
 
 </div>
 
+
 <div class="review-box">
 
 <h2>Review Answers</h2>
 
 <div class="review-list">
-
 <div class="item">
 <span>HTML stands for Markup Language</span>
 <span class="tag ok">Correct</span>
@@ -359,11 +307,6 @@ d="M420 180 C470 165,505 125,520 70 C535 125,570 165,620 180 C570 195,535 235,52
 <span class="tag skip">Skipped</span>
 </div>
 
-</div>
-
-<div class="review-buttons">
-<button class="btn play">Play Again</button>
-<button class="btn review">Review Again</button>
 </div>
 
 </div>
