@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result - MatchMind Quiz</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-bg: #6fa8c4;
+      --beige: #e7d3b4;
+      --beige-light: #efe2cc;
+      --dark-brown: #2b1f12;
+      --text-dark: #2b1f12;
+      --text-gray: #7a6f60;
+      --white: #ffffff;
+      --green: #2f9e5b;
+      --red: #d9534f;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--blue-bg);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .outer-card {
+      background: var(--beige);
+      border-radius: 28px;
+      width: 100%;
+      max-width: 760px;
+      padding: 28px;
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .result-container {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .result-icon {
+      font-size: 56px;
+      margin-bottom: 8px;
+    }
+
+    #result-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    #result-name {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 24px;
+    }
+
+    .score-box {
+      background: var(--dark-brown);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .score-box h2 {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .score-box p {
+      font-size: 13px;
+      color: var(--beige);
+      margin-top: 2px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    .stat-card {
+      background: var(--beige-light);
+      border-radius: 14px;
+      padding: 14px 8px;
+    }
+
+    .stat-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .stat-card p {
+      font-size: 11px;
+      color: var(--text-gray);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      gap: 12px;
+    }
+
+    .bottom-row button {
+      flex: 1;
+      border: none;
+      border-radius: 30px;
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    #btn-review {
+      background: var(--beige-light);
+      color: var(--text-dark);
+    }
+
+    #btn-review:hover {
+      background: var(--white);
+    }
+
+    #btn-play-again {
+      background: var(--dark-brown);
+      color: var(--white);
+    }
+
+    #btn-play-again:hover {
+      background: #3d2c1a;
+    }
+
+    @media (max-width: 480px) {
+      .outer-card { padding: 18px; border-radius: 20px; }
+      .result-container { padding: 22px 16px; }
+      .stats-grid { gap: 8px; }
+      .bottom-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+    <div class="outer-card">
+
+      <div class="brand-row">
+        <span class="brand-name">MatchMind</span>
+      </div>
+
+      <div class="result-container">
+
+        <div class="result-icon" id="result-icon">🏆</div>
+
+        <h1 id="result-title">Well Done!</h1>
+        <p id="result-name">Great effort, Player!</p>
+
+        <div class="score-box">
+          <h2 id="score-num">0</h2>
+          <p id="score-of">out of 5 correct</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3 id="stat-correct">0</h3>
+            <p>Correct</p>
+          </div>
+          <div class="stat-card">
+            <h3 id="stat-wrong">0</h3>
+            <p>Wrong</p>
+          </div>
+          <div class="stat-card">
+            <h3 id="stat-skipped">0</h3>
+            <p>Skipped</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bottom-row">
+        <button id="btn-review">Review Answers</button>
+        <button id="btn-play-again">Play Again &raquo;</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/result.js"></script>
+</body>
+</html>
