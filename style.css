@@ -5,7 +5,7 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 body{
-    background:#E6E7E2;
+    background:#82837fe7;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -73,7 +73,7 @@ h2{
     width:100%;
     padding:18px;
     border:none;
-    border-radius:10px;
+    border-radius:50px;
     background:#b2a396;
     color:white;
     font-size:32px;
