@@ -116,7 +116,7 @@ function nextQuestion() {
 
     if (currentQuestionIndex >= quizQuestions.length) {
         alert("Quiz finished!");
-        window.location.href = "result.html";
+        window.location.href = "score.html";
         return;
     }
 
@@ -128,4 +128,18 @@ function skipQuestion() {
     nextQuestion();
 }
 
+var optionButtons = document.querySelectorAll(".option");
 
+for (let i = 0; i < optionButtons.length; i++) {
+
+    optionButtons[i].onclick = function () {
+
+        // remove selection from all options
+        for (let j = 0; j < optionButtons.length; j++) {
+            optionButtons[j].classList.remove("selected");
+        }
+
+        // keep clicked option selected
+        this.classList.add("selected");
+    };
+}
